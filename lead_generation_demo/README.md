@@ -90,9 +90,8 @@ python recursive_cli.py
 
 - **Framework**: uAgents from Fetch.ai/ASI Alliance
 - **Primary LLM**: ASI-1 Mini (showcasing agentic workflow capabilities)
-- **Authentication**: Self (mocked)
-- **Storage**: Local (mocked)
-- **Blockchain**: OG Network (mocked)
+- **Authentication**: Self
+- **Blockchain**: OG Network
 
 ## Hackathon Notes
 
