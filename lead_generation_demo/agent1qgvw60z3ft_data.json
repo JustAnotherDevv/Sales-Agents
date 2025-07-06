@@ -1,0 +1,18 @@
+{
+    "registration_info": {
+        "name": "Lead Generation CLI Agent",
+        "address": "agent1qgvw60z3ftkek7gca88c9d0m2kxansxne6nyfdngmtryv96ctdtgstaqpfy",
+        "type": "cli_bridge",
+        "capabilities": [
+            "user_interface",
+            "agent_communication",
+            "request_tracking"
+        ],
+        "description": "CLI bridge agent that enables direct communication between the CLI and specialized agents",
+        "protocols": [
+            "http"
+        ],
+        "registered_at": "2023-07-06T00:00:00Z",
+        "status": "active"
+    }
+}

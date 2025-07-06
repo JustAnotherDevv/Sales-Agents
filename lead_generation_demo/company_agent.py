@@ -35,6 +35,8 @@ company_agent = Agent(
     port=COMPANY_AGENT_PORT,
     seed="company_agent_seed",  # Use a fixed seed for demo purposes
     endpoint=[f"http://localhost:{COMPANY_AGENT_PORT}/submit"],
+    # Enable Almanac registration for remote agent discovery
+    enable_registration=True
 )
 
 # Define the scraper agent address that we'll send sales spec to

@@ -4,15 +4,17 @@ import json
 import logging
 import os
 import subprocess
+import sys
 import time
+import hashlib
+import base64
+import uuid
 from datetime import datetime
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
+# We'll use a simpler approach for demo purposes
 
 # Import mock services
 from mock_services import get_self_auth, get_storage, get_blockchain
-
-# Import company agent models and functions
-from company_agent import SalesSpec, SummaryRequestMessage, LeadSummaryResponse
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
@@ -23,111 +25,103 @@ self_auth = get_self_auth()
 storage = get_storage()
 blockchain = get_blockchain()
 
-async def submit_sales_spec(company_name: str, spec: str, bounty_amount: float):
-    """Submit sales specification to the scraper agent"""
-    # Start the company agent process if not already running
-    ensure_company_agent_running()
+# For demo purposes, we'll use a mock CLI address and signature
+CLI_ADDRESS = "agent1qcli0000000000000000000000000000000000000000000000"
+
+# Function to create a mock signature
+def create_mock_signature(digest):
+    # For demo purposes, create a hex-encoded signature
+    # This matches the format expected by uAgents
+    import binascii
+    # Create a fixed 64-byte value (typical for Ed25519 signatures)
+    mock_bytes = bytes([0x42] * 64)  # 64 bytes of 0x42
+    # Return as hex string
+    return binascii.hexlify(mock_bytes).decode('utf-8')
+
+async def submit_sales_spec(company_name: str, spec: str, bounty_amount: float = 100.0):
+    """Submit a sales specification directly to the scraper agent via CLI agent"""
+    logger.info(f"Submitting sales spec for {company_name}: {spec}")
     
-    # Create sales spec message
-    sales_spec = SalesSpec(
-        company_name=company_name,
-        spec=spec,
-        bounty_amount=bounty_amount
-    )
+    # Ensure CLI agent is running
+    ensure_cli_agent_running()
     
-    # Import here to avoid circular imports
-    from company_agent import COMPANY_AGENT_PORT, COMPANY_AGENT_ADDRESS
-    import aiohttp
+    # Use CLI agent to send the sales spec directly to the scraper agent
+    from cli_agent import send_sales_spec
+    request_id = await send_sales_spec(company_name, spec, bounty_amount)
     
-    # Send to company agent via REST endpoint
-    logger.info(f"Sending sales spec to company agent via REST: {spec}")
-    async with aiohttp.ClientSession() as session:
-        url = f"http://localhost:{COMPANY_AGENT_PORT}/submit"
-        payload = {
-            "destination": COMPANY_AGENT_ADDRESS,
-            "message": sales_spec.dict(),
-            "sender": "cli"
-        }
-        async with session.post(url, json=payload) as response:
-            result = await response.json()
-            logger.info(f"Response from company agent: {result}")
+    logger.info(f"Sales spec submitted with request ID: {request_id}")
+    
+    # In a real implementation, we might wait for a response
+    # await get_response(request_id)
     
     # In a real implementation, we would wait for a response
     # For the demo, we'll just wait a bit to simulate processing time
     logger.info("Waiting for agents to process leads...")
     await asyncio.sleep(5)  # Wait for agents to process
 
-def ensure_company_agent_running():
-    """Ensure the company agent is running in a separate process"""
-    # Check if the company agent is already running
+# No need for company/orchestrator agent anymore - removed function
+
+def ensure_cli_agent_running():
+    """Ensure the CLI agent is running in a separate process"""
+    # Check if the CLI agent is already running
     try:
-        # Simple check - try to see if there's a process listening on port 8000
+        # Simple check - try to see if there's a process listening on port 8010
         import socket
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        result = s.connect_ex(('127.0.0.1', 8000))
+        result = s.connect_ex(('127.0.0.1', 8010))
         s.close()
         
         if result == 0:
             # Port is open, agent is likely running
-            logger.info("Company agent already running")
+            logger.info("CLI agent already running")
             return
     except:
         pass
     
-    # Start the company agent in a separate process
-    logger.info("Starting company agent process...")
-    subprocess.Popen(["python", "company_agent.py"], 
-                    stdout=subprocess.PIPE, 
-                    stderr=subprocess.PIPE)
-    
-    # Wait a moment for the agent to start
-    logger.info("Waiting for company agent to start...")
-    time.sleep(3)
-    logger.info("Company agent should be running now")
+    # Start the CLI agent in a separate process
+    logger.info("Starting CLI agent in a separate process")
+    try:
+        # Use subprocess to start the CLI agent
+        import subprocess
+        process = subprocess.Popen(
+            [sys.executable, "cli_agent.py"],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE
+        )
+        logger.info(f"CLI agent process started with PID {process.pid}")
+        
+        # Wait a bit for the agent to start up
+        import time
+        time.sleep(2)
+    except Exception as e:
+        logger.error(f"Error starting CLI agent: {e}")
+        raise
 
 async def get_lead_summaries():
-    """Request lead summaries from summary agent using message"""
-    logger.info("Requesting lead summaries from summary agent")
+    """Request lead summaries directly from summary agent using CLI agent"""
+    logger.info("Requesting lead summaries directly from summary agent")
     
-    # Ensure company agent is running
-    ensure_company_agent_running()
+    # Ensure CLI agent is running
+    ensure_cli_agent_running()
     
-    # Import here to avoid circular imports
-    from company_agent import COMPANY_AGENT_PORT, COMPANY_AGENT_ADDRESS
-    import aiohttp
+    # Import CLI agent functions
+    from cli_agent import request_lead_summaries, get_response
     
-    # Create a request message
-    request = SummaryRequestMessage(
-        request_id=f"req_{datetime.now().timestamp()}"
-    )
+    # Send summary request via CLI agent directly to summary agent
+    logger.info(f"Sending summary request directly to summary agent via CLI agent")
+    request_id = await request_lead_summaries()
     
-    # Send to company agent via REST endpoint
-    logger.info(f"Sending summary request to company agent via REST")
-    async with aiohttp.ClientSession() as session:
-        url = f"http://localhost:{COMPANY_AGENT_PORT}/submit"
-        payload = {
-            "destination": COMPANY_AGENT_ADDRESS,
-            "message": request.dict(),
-            "sender": "cli"
-        }
-        async with session.post(url, json=payload) as response:
-            result = await response.json()
-            logger.info(f"Response from company agent: {result}")
+    # Wait for response with a timeout
+    logger.info(f"Waiting for summary response with request ID: {request_id}")
+    summaries = await get_response(request_id, timeout=10)
     
-    # In a real implementation, we would wait for a response message
-    # For the demo, we'll simulate receiving summaries after a short delay
-    await asyncio.sleep(2)  # Wait for response
-    
-    # For demo purposes, let's create some mock summaries
-    # In a real implementation, these would come from the summary agent's response
-    mock_summaries = storage.get("mock_lead_summaries")
-    
-    if not mock_summaries:
-        logger.warning("No lead summaries available yet")
+    if summaries:
+        logger.info(f"Retrieved {len(summaries)} lead summaries")
+        return summaries
+    else:
+        logger.warning("No summaries received within timeout period")
+        # For demo purposes, return empty list if no response received
         return []
-    
-    logger.info(f"Received {len(mock_summaries)} lead summaries")
-    return mock_summaries
 
 async def display_lead_summary(summary):
     """Display a lead summary to the company"""
