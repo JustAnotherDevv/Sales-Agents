@@ -1,0 +1,19 @@
+{
+    "registration_info": {
+        "name": "Lead Generation Summary Agent",
+        "address": "agent1qwqy34f584lw3y4749f86n7a46le93hvpqr4kprhkde3s6wjcewl5vxvsnm",
+        "type": "summary",
+        "capabilities": [
+            "lead_summarization",
+            "knowledge_graph",
+            "context_awareness",
+            "asi1_mini_showcase"
+        ],
+        "description": "Summary agent that showcases ASI-1 Mini's capabilities for intelligent lead summarization",
+        "protocols": [
+            "http"
+        ],
+        "registered_at": "2023-07-06T00:00:00Z",
+        "status": "active"
+    }
+}

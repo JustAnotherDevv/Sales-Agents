@@ -1,0 +1,64 @@
+# Multi-Agent Lead Generation Demo Architecture
+
+```
++-------------------+     +-----------------+     +----------------+     +----------------+
+|                   |     |                 |     |                |     |                |
+|   Company CLI     |     |  Scraper Agent  |     | Alignment Agent|     |  Scoring Agent |
+|   Interface       |<--->|  (Agent 1)      |---->|  (Agent 2)     |---->|  (Agent 3)     |
+|                   |     |                 |     |                |     |                |
++-------------------+     +-----------------+     +----------------+     +----------------+
+        ^                                                                       |
+        |                                                                       |
+        |                                                                       v
++-------------------+                                                  +----------------+
+|                   |                                                  |                |
+|  Mock Services    |<-------------------------------------------------|  Summary Agent |
+|  (Auth/Storage/   |                                                  |  (Agent 4)     |
+|   Blockchain)     |                                                  |                |
++-------------------+                                                  +----------------+
+        ^
+        |
+        v
++-------------------+
+|                   |
+|  ASI:One &        |
+|  Agentverse.ai    |
+|  Registration     |
++-------------------+
+
+```
+
+## Agent Communication Flow
+
+1. Company submits sales specification via CLI
+2. Scraper Agent (1): Retrieves potential leads from mock data
+3. Alignment Agent (2): Uses ASI-1 Mini to match leads with company's sales spec
+4. Scoring Agent (3): Uses ASI-1 Mini to score and price leads
+5. Summary Agent (4): Uses ASI-1 Mini to generate intelligent summaries
+6. Company views and purchases leads via CLI
+7. Mock blockchain transaction reveals full lead details
+
+## Key Components
+
+- **Company CLI**: Interface for companies to submit specs and view leads
+- **Scraper Agent**: Retrieves potential leads (mocked for demo)
+- **Alignment Agent**: Matches leads with company requirements using ASI-1 Mini
+- **Scoring Agent**: Scores and prices leads using ASI-1 Mini
+- **Summary Agent**: Generates intelligent summaries using ASI-1 Mini
+- **Mock Services**:
+  - Self Authentication: User management and auth
+  - Walrus Storage: Local JSON storage
+  - OG Network: Mock blockchain transactions
+- **Agent Registration**: Simulates registration on ASI:One and Agentverse.ai
+
+## ASI-1 Mini Integration Points
+
+1. **Alignment Agent**: Intent matching, keyword extraction
+2. **Scoring Agent**: Multi-factor lead evaluation
+3. **Summary Agent**: Context-aware summarization, knowledge graph connections
+
+## Data Flow
+
+- Sales Spec → Scraper → Alignment → Scoring → Summary → Company
+- Lead Data: Progressively enriched through the agent pipeline
+- Payment Flow: Company → Mock Blockchain → Lead Contact Reveal

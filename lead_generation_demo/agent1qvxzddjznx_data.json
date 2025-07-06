@@ -1,0 +1,18 @@
+{
+    "registration_info": {
+        "name": "Lead Generation Alignment Agent",
+        "address": "agent1qvxzddjznxyew0clz4z99ljz3m5q4tdnumayrjlcvepylpfk4jglcxklq9s",
+        "type": "alignment",
+        "capabilities": [
+            "intent_matching",
+            "lead_filtering",
+            "asi1_mini_integration"
+        ],
+        "description": "Alignment agent that filters leads based on sales specifications using ASI-1 Mini",
+        "protocols": [
+            "http"
+        ],
+        "registered_at": "2023-07-06T00:00:00Z",
+        "status": "active"
+    }
+}

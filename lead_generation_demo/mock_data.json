@@ -1,0 +1,112 @@
+[
+  {
+    "company_name": "TechCorp",
+    "industry": "fintech",
+    "description": "B2B SaaS company offering payment API solutions",
+    "employees": 50,
+    "funding": "Series A",
+    "investors": ["InvestorX", "VentureY"],
+    "growth": "2x YoY",
+    "website": "techcorp.io",
+    "contact": "info@techcorp.io"
+  },
+  {
+    "company_name": "HealthAI",
+    "industry": "healthcare",
+    "description": "AI diagnostics platform for hospitals",
+    "employees": 120,
+    "funding": "Series B",
+    "investors": ["MedFund", "HealthVentures"],
+    "growth": "80% YoY",
+    "website": "healthai.com",
+    "contact": "contact@healthai.com"
+  },
+  {
+    "company_name": "DataFlow",
+    "industry": "data analytics",
+    "description": "B2B data pipeline solutions for enterprise",
+    "employees": 75,
+    "funding": "Series A",
+    "investors": ["DataCapital", "InvestorX"],
+    "growth": "1.5x YoY",
+    "website": "dataflow.tech",
+    "contact": "sales@dataflow.tech"
+  },
+  {
+    "company_name": "CloudSecure",
+    "industry": "cybersecurity",
+    "description": "B2B cloud security platform",
+    "employees": 60,
+    "funding": "Seed",
+    "investors": ["SecureVentures"],
+    "growth": "3x YoY",
+    "website": "cloudsecure.dev",
+    "contact": "hello@cloudsecure.dev"
+  },
+  {
+    "company_name": "FinanceApp",
+    "industry": "fintech",
+    "description": "Consumer banking application with B2B API",
+    "employees": 200,
+    "funding": "Series C",
+    "investors": ["FinCapital", "VentureY"],
+    "growth": "70% YoY",
+    "website": "financeapp.com",
+    "contact": "partnerships@financeapp.com"
+  },
+  {
+    "company_name": "RetailTech",
+    "industry": "retail",
+    "description": "E-commerce platform with B2B integration options",
+    "employees": 85,
+    "funding": "Series A",
+    "investors": ["RetailVentures", "EcomFund"],
+    "growth": "60% YoY",
+    "website": "retailtech.com",
+    "contact": "business@retailtech.com"
+  },
+  {
+    "company_name": "LogisticsPro",
+    "industry": "logistics",
+    "description": "Supply chain optimization software for enterprise",
+    "employees": 110,
+    "funding": "Series B",
+    "investors": ["SupplyChainCapital", "LogisticsX"],
+    "growth": "40% YoY",
+    "website": "logisticspro.io",
+    "contact": "enterprise@logisticspro.io"
+  },
+  {
+    "company_name": "EdTechNow",
+    "industry": "education",
+    "description": "B2B learning management system",
+    "employees": 45,
+    "funding": "Seed",
+    "investors": ["EduVentures"],
+    "growth": "100% YoY",
+    "website": "edtechnow.com",
+    "contact": "sales@edtechnow.com"
+  },
+  {
+    "company_name": "AgriSmart",
+    "industry": "agriculture",
+    "description": "IoT solutions for agricultural businesses",
+    "employees": 30,
+    "funding": "Seed",
+    "investors": ["AgTech Fund"],
+    "growth": "50% YoY",
+    "website": "agrismart.tech",
+    "contact": "info@agrismart.tech"
+  },
+  {
+    "company_name": "InsureTech",
+    "industry": "fintech",
+    "description": "Insurance API platform for financial institutions",
+    "employees": 65,
+    "funding": "Series A",
+    "investors": ["InsureCapital", "FinCapital"],
+    "growth": "90% YoY",
+    "website": "insuretech.io",
+    "contact": "api@insuretech.io"
+  }
+]

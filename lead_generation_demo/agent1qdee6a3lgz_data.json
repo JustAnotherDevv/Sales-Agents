@@ -1,0 +1,19 @@
+{
+    "is_running": false,
+    "registration_info": {
+        "name": "Lead Generation Scraper Agent",
+        "address": "agent1qdee6a3lgzjr7pvq8lf8vzvw2rr3p0nw8hgt07a7cfy3tgryqmfexuzwfnq",
+        "type": "scraper",
+        "capabilities": [
+            "lead_scraping",
+            "data_collection",
+            "mock_data_processing"
+        ],
+        "description": "Scraper agent that collects lead data for the multi-agent lead generation system",
+        "protocols": [
+            "http"
+        ],
+        "registered_at": "2023-07-06T00:00:00Z",
+        "status": "active"
+    }
+}

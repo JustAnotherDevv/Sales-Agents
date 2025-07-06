@@ -1,0 +1,107 @@
+{
+  "user_address": "user_7715_address",
+  "current_user_id": "user_7715",
+  "company_user_1501": {
+    "name": "racoonCorp",
+    "created_at": "2025-07-06T01:42:37.234686"
+  },
+  "sales_spec_user_1501": {
+    "spec": "Looking for ethereum validators",
+    "bounty_amount": 200.0,
+    "timestamp": "2025-07-06T01:43:21.302091"
+  },
+  "company_user_1443": {
+    "name": "racoonCorp",
+    "created_at": "2025-07-06T01:44:56.813075"
+  },
+  "sales_spec_user_1443": {
+    "spec": "Looking for ethereum validators",
+    "bounty_amount": 200.0,
+    "timestamp": "2025-07-06T01:45:05.749430"
+  },
+  "company_user_0397": {
+    "name": "racoonCorp",
+    "created_at": "2025-07-06T01:53:04.110402"
+  },
+  "sales_spec_user_0397": {
+    "spec": "looking for validators",
+    "bounty_amount": 20.0,
+    "timestamp": "2025-07-06T01:53:14.834251"
+  },
+  "company_user_8645": {
+    "name": "racoonCorp",
+    "created_at": "2025-07-06T02:01:12.154713"
+  },
+  "sales_spec_user_8645": {
+    "spec": "looking for love",
+    "bounty_amount": 20.0,
+    "timestamp": "2025-07-06T02:01:22.107058"
+  },
+  "company_user_2617": {
+    "name": "2",
+    "created_at": "2025-07-06T02:08:28.489688"
+  },
+  "sales_spec_user_2617": {
+    "spec": "looking for love",
+    "bounty_amount": 20.0,
+    "timestamp": "2025-07-06T02:08:37.482237"
+  },
+  "mock_lead_summaries": [
+    {
+      "company_name": "PayFast",
+      "industry": "fintech",
+      "tldr": "PayFast offers innovative payment solutions with recent Series B funding. Their technology aligns with your payment processing focus.",
+      "detailed": "PayFast is a rapidly growing fintech company specializing in secure payment processing solutions for small businesses. Their platform integrates with major e-commerce systems and offers competitive transaction fees. Recent expansion into blockchain-based payments shows forward-thinking approach.",
+      "price": 1200.0,
+      "confidence": 0.87,
+      "knowledge_connections": [
+        "Connected to your existing client FinanceApp",
+        "Uses similar technology stack to your portfolio companies"
+      ],
+      "encrypted_contact": {
+        "website": "www.payfast.io",
+        "contact": "sarah@payfast.io (Sarah Chen, Business Development)"
+      }
+    },
+    {
+      "company_name": "BlockWallet",
+      "industry": "fintech",
+      "tldr": "BlockWallet is developing next-gen digital wallets with blockchain integration, perfectly matching your digital wallets keyword.",
+      "detailed": "BlockWallet combines traditional digital wallet functionality with advanced blockchain features. Their solution allows seamless transitions between fiat and crypto payments while maintaining regulatory compliance. Early traction shows strong product-market fit in the SMB segment.",
+      "price": 950.0,
+      "confidence": 0.92,
+      "knowledge_connections": [
+        "Shares investors with your portfolio company CryptoSecure"
+      ],
+      "encrypted_contact": {
+        "website": "www.blockwallet.com",
+        "contact": "michael@blockwallet.com (Michael Rodriguez, CEO)"
+      }
+    },
+    {
+      "company_name": "ChainPay",
+      "industry": "fintech",
+      "tldr": "ChainPay is building blockchain payment infrastructure for businesses, directly relevant to your blockchain keyword.",
+      "detailed": "ChainPay provides enterprise-grade blockchain payment infrastructure that enables businesses to accept cryptocurrency payments while receiving fiat settlements. Their solution addresses volatility concerns while providing the benefits of blockchain technology. Currently serving 50+ businesses with growing transaction volume.",
+      "price": 1500.0,
+      "confidence": 0.89,
+      "knowledge_connections": [
+        "Technology complements your existing payment solutions",
+        "Potential strategic partnership opportunity"
+      ],
+      "encrypted_contact": {
+        "website": "www.chainpay.tech",
+        "contact": "alex@chainpay.tech (Alex Johnson, Partnerships)"
+      }
+    }
+  ],
+  "company_user_7715": {
+    "name": "racoonCorp",
+    "created_at": "2025-07-06T02:10:50.827744"
+  },
+  "sales_spec_user_7715": {
+    "spec": "looking for tea bing teng",
+    "bounty_amount": 20.0,
+    "timestamp": "2025-07-06T02:11:04.395342"
+  }
+}

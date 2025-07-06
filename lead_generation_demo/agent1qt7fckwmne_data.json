@@ -1,0 +1,18 @@
+{
+    "registration_info": {
+        "name": "Lead Generation Scoring Agent",
+        "address": "agent1qt7fckwmnezxar2y6emrekx0ue036yz02289hte00j5v9lgwuujhyv9kzwx",
+        "type": "scoring",
+        "capabilities": [
+            "lead_scoring",
+            "price_calculation",
+            "asi1_mini_integration"
+        ],
+        "description": "Scoring agent that evaluates leads based on multiple factors using ASI-1 Mini",
+        "protocols": [
+            "http"
+        ],
+        "registered_at": "2023-07-06T00:00:00Z",
+        "status": "active"
+    }
+}
