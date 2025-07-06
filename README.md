@@ -1,4 +1,4 @@
-# Multi-Agent Lead Generation Demo
+d# Multi-Agent Lead Generation Demo
 
 A hackathon demo showcasing the power of decentralized AI agents using the uAgents framework and ASI-1 Mini LLM. This proof-of-concept demonstrates agent collaboration and Web3-native AI capabilities.
 
@@ -11,14 +11,7 @@ This demo features four autonomous AI agents that collaborate to find, filter, s
 3. **Scoring Agent**: Assigns quality scores to leads using ASI-1 Mini
 4. **Summary Agent**: Creates intelligent summaries using ASI-1 Mini
 
-## ASI-1 Mini Showcase Features
-
-This demo highlights these key capabilities of ASI-1 Mini:
-
-- **Autonomous Agentic Workflows**: Agents make independent decisions without human intervention
-- **Think, Adapt, and Collaborate**: Agents reason about lead quality and adapt summaries based on context
-- **Knowledge Graph Integration**: Connects leads to industry relationships and market knowledge
-- **Context-Aware, Adaptive Interactions**: Maintains conversation history and adapts based on context
+All agents are registered and discoverable on Almanac.
 
 ## Setup Instructions
 
