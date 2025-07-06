@@ -4,6 +4,7 @@ import Landing from '../views/company/Landing'
 import Login from '../views/company/Login'
 import CreateBounty from '../views/company/CreateBounty'
 import LeadResults from '../views/company/LeadResults'
+import LeadGeneration from '../views/company/LeadGeneration'
 import Register from '../views/agent/Register'
 import Dashboard from '../views/agent/Dashboard'
 
@@ -31,6 +32,12 @@ const routes: IRoute[] = [
         path: '/company/lead-results',
         name: 'Lead Results',
         component: LeadResults,
+        exact: true,
+    },
+    {
+        path: '/lead-generation',
+        name: 'Lead Generation',
+        component: LeadGeneration,
         exact: true,
     },
     // Agent routes

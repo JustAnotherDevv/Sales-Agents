@@ -10,6 +10,7 @@ import { Provider } from 'react-redux'
 import { store } from '@store/store'
 import styles from './App.module.scss'
 import { classNamesFunc } from 'classnames-generics'
+import Layout from './components/Layout'
 
 const classNames = classNamesFunc<keyof typeof styles>()
 type Props = {
@@ -19,28 +20,30 @@ type Props = {
 const Application: React.FunctionComponent<{}> = () => {
     return (
         <Provider store={store}>
-            <div className={classNames(styles.appContainer)}>
+            <div className={`${classNames(styles.appContainer)} dark`}>
                 <BrowserRouter>
-                    <Switch>
-                        {routes.map((route, index) => {
-                            return (
-                                <Route
-                                    key={index}
-                                    path={route.path}
-                                    exact={route.exact}
-                                    render={(
-                                        props: RouteChildrenProps<any>
-                                    ) => (
-                                        <route.component
-                                            name={route.name}
-                                            {...props}
-                                            {...route.props}
-                                        />
-                                    )}
-                                />
-                            )
-                        })}
-                    </Switch>
+                    <Layout>
+                        <Switch>
+                            {routes.map((route, index) => {
+                                return (
+                                    <Route
+                                        key={index}
+                                        path={route.path}
+                                        exact={route.exact}
+                                        render={(
+                                            props: RouteChildrenProps<any>
+                                        ) => (
+                                            <route.component
+                                                name={route.name}
+                                                {...props}
+                                                {...route.props}
+                                            />
+                                        )}
+                                    />
+                                )
+                            })}
+                        </Switch>
+                    </Layout>
                 </BrowserRouter>
             </div>
         </Provider>

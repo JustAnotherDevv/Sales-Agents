@@ -92,14 +92,14 @@ const Register: React.FC = () => {
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 py-8">
+        <div className="min-h-screen bg-background py-8">
             <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-white shadow rounded-lg p-6">
+                <div className="bg-card shadow rounded-lg p-6">
                     <div className="text-center mb-8">
-                        <h1 className="text-3xl font-bold text-gray-900">
+                        <h1 className="text-3xl font-bold text-foreground">
                             Join as a Sales Agent
                         </h1>
-                        <p className="text-gray-600 mt-2">
+                        <p className="text-muted-foreground mt-2">
                             Start earning by connecting businesses with
                             qualified leads
                         </p>
@@ -111,7 +111,7 @@ const Register: React.FC = () => {
                             <div>
                                 <label
                                     htmlFor="firstName"
-                                    className="block text-sm font-medium text-gray-700"
+                                    className="block text-sm font-medium text-foreground"
                                 >
                                     First Name *
                                 </label>
@@ -120,16 +120,16 @@ const Register: React.FC = () => {
                                     id="firstName"
                                     name="firstName"
                                     required
-                                    className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                                    className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-ring focus:border-ring sm:text-sm ${
                                         errors.firstName
-                                            ? 'border-red-300'
-                                            : 'border-gray-300'
+                                            ? 'border-destructive'
+                                            : 'border-input'
                                     }`}
                                     value={formData.firstName}
                                     onChange={handleInputChange}
                                 />
                                 {errors.firstName && (
-                                    <p className="mt-1 text-sm text-red-600">
+                                    <p className="mt-1 text-sm text-destructive">
                                         {errors.firstName}
                                     </p>
                                 )}
@@ -138,7 +138,7 @@ const Register: React.FC = () => {
                             <div>
                                 <label
                                     htmlFor="lastName"
-                                    className="block text-sm font-medium text-gray-700"
+                                    className="block text-sm font-medium text-foreground"
                                 >
                                     Last Name *
                                 </label>
@@ -147,16 +147,16 @@ const Register: React.FC = () => {
                                     id="lastName"
                                     name="lastName"
                                     required
-                                    className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                                    className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-ring focus:border-ring sm:text-sm ${
                                         errors.lastName
-                                            ? 'border-red-300'
-                                            : 'border-gray-300'
+                                            ? 'border-destructive'
+                                            : 'border-input'
                                     }`}
                                     value={formData.lastName}
                                     onChange={handleInputChange}
                                 />
                                 {errors.lastName && (
-                                    <p className="mt-1 text-sm text-red-600">
+                                    <p className="mt-1 text-sm text-destructive">
                                         {errors.lastName}
                                     </p>
                                 )}
@@ -166,7 +166,7 @@ const Register: React.FC = () => {
                         <div>
                             <label
                                 htmlFor="email"
-                                className="block text-sm font-medium text-gray-700"
+                                className="block text-sm font-medium text-foreground"
                             >
                                 Email Address *
                             </label>
@@ -175,16 +175,16 @@ const Register: React.FC = () => {
                                 id="email"
                                 name="email"
                                 required
-                                className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                                className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-ring focus:border-ring sm:text-sm ${
                                     errors.email
-                                        ? 'border-red-300'
-                                        : 'border-gray-300'
+                                        ? 'border-destructive'
+                                        : 'border-input'
                                 }`}
                                 value={formData.email}
                                 onChange={handleInputChange}
                             />
                             {errors.email && (
-                                <p className="mt-1 text-sm text-red-600">
+                                <p className="mt-1 text-sm text-destructive">
                                     {errors.email}
                                 </p>
                             )}
@@ -193,7 +193,7 @@ const Register: React.FC = () => {
                         <div>
                             <label
                                 htmlFor="phone"
-                                className="block text-sm font-medium text-gray-700"
+                                className="block text-sm font-medium text-foreground"
                             >
                                 Phone Number *
                             </label>
@@ -202,16 +202,16 @@ const Register: React.FC = () => {
                                 id="phone"
                                 name="phone"
                                 required
-                                className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                                className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-ring focus:border-ring sm:text-sm ${
                                     errors.phone
-                                        ? 'border-red-300'
-                                        : 'border-gray-300'
+                                        ? 'border-destructive'
+                                        : 'border-input'
                                 }`}
                                 value={formData.phone}
                                 onChange={handleInputChange}
                             />
                             {errors.phone && (
-                                <p className="mt-1 text-sm text-red-600">
+                                <p className="mt-1 text-sm text-destructive">
                                     {errors.phone}
                                 </p>
                             )}
@@ -222,7 +222,7 @@ const Register: React.FC = () => {
                             <div>
                                 <label
                                     htmlFor="password"
-                                    className="block text-sm font-medium text-gray-700"
+                                    className="block text-sm font-medium text-foreground"
                                 >
                                     Password *
                                 </label>
@@ -231,16 +231,16 @@ const Register: React.FC = () => {
                                     id="password"
                                     name="password"
                                     required
-                                    className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                                    className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-ring focus:border-ring sm:text-sm ${
                                         errors.password
-                                            ? 'border-red-300'
-                                            : 'border-gray-300'
+                                            ? 'border-destructive'
+                                            : 'border-input'
                                     }`}
                                     value={formData.password}
                                     onChange={handleInputChange}
                                 />
                                 {errors.password && (
-                                    <p className="mt-1 text-sm text-red-600">
+                                    <p className="mt-1 text-sm text-destructive">
                                         {errors.password}
                                     </p>
                                 )}
@@ -249,7 +249,7 @@ const Register: React.FC = () => {
                             <div>
                                 <label
                                     htmlFor="confirmPassword"
-                                    className="block text-sm font-medium text-gray-700"
+                                    className="block text-sm font-medium text-foreground"
                                 >
                                     Confirm Password *
                                 </label>
@@ -258,16 +258,16 @@ const Register: React.FC = () => {
                                     id="confirmPassword"
                                     name="confirmPassword"
                                     required
-                                    className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                                    className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-ring focus:border-ring sm:text-sm ${
                                         errors.confirmPassword
-                                            ? 'border-red-300'
-                                            : 'border-gray-300'
+                                            ? 'border-destructive'
+                                            : 'border-input'
                                     }`}
                                     value={formData.confirmPassword}
                                     onChange={handleInputChange}
                                 />
                                 {errors.confirmPassword && (
-                                    <p className="mt-1 text-sm text-red-600">
+                                    <p className="mt-1 text-sm text-destructive">
                                         {errors.confirmPassword}
                                     </p>
                                 )}
@@ -278,7 +278,7 @@ const Register: React.FC = () => {
                         <div>
                             <label
                                 htmlFor="experience"
-                                className="block text-sm font-medium text-gray-700"
+                                className="block text-sm font-medium text-foreground"
                             >
                                 Years of Sales Experience *
                             </label>
@@ -286,10 +286,10 @@ const Register: React.FC = () => {
                                 id="experience"
                                 name="experience"
                                 required
-                                className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm ${
+                                className={`mt-1 block w-full border rounded-md shadow-sm focus:ring-ring focus:border-ring sm:text-sm ${
                                     errors.experience
-                                        ? 'border-red-300'
-                                        : 'border-gray-300'
+                                        ? 'border-destructive'
+                                        : 'border-input'
                                 }`}
                                 value={formData.experience}
                                 onChange={handleInputChange}
@@ -304,7 +304,7 @@ const Register: React.FC = () => {
                                 <option value="10+">10+ years</option>
                             </select>
                             {errors.experience && (
-                                <p className="mt-1 text-sm text-red-600">
+                                <p className="mt-1 text-sm text-destructive">
                                     {errors.experience}
                                 </p>
                             )}
@@ -312,7 +312,7 @@ const Register: React.FC = () => {
 
                         {/* Specialties */}
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">
+                            <label className="block text-sm font-medium text-foreground mb-2">
                                 Specialties * (Select all that apply)
                             </label>
                             <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
@@ -329,16 +329,16 @@ const Register: React.FC = () => {
                                             onChange={() =>
                                                 handleSpecialtyChange(specialty)
                                             }
-                                            className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                                            className="h-4 w-4 text-primary focus:ring-ring border-input rounded"
                                         />
-                                        <span className="ml-2 text-sm text-gray-700">
+                                        <span className="ml-2 text-sm text-foreground">
                                             {specialty}
                                         </span>
                                     </label>
                                 ))}
                             </div>
                             {errors.specialties && (
-                                <p className="mt-1 text-sm text-red-600">
+                                <p className="mt-1 text-sm text-destructive">
                                     {errors.specialties}
                                 </p>
                             )}
@@ -348,7 +348,7 @@ const Register: React.FC = () => {
                         <div>
                             <label
                                 htmlFor="bio"
-                                className="block text-sm font-medium text-gray-700"
+                                className="block text-sm font-medium text-foreground"
                             >
                                 Bio
                             </label>
@@ -356,7 +356,7 @@ const Register: React.FC = () => {
                                 id="bio"
                                 name="bio"
                                 rows={4}
-                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                className="mt-1 block w-full border-input rounded-md shadow-sm focus:ring-ring focus:border-ring sm:text-sm"
                                 placeholder="Tell us about your sales experience and achievements..."
                                 value={formData.bio}
                                 onChange={handleInputChange}
@@ -367,13 +367,13 @@ const Register: React.FC = () => {
                         <div className="flex justify-end space-x-3">
                             <button
                                 type="button"
-                                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md transition duration-300"
+                                className="bg-muted hover:bg-muted/80 text-muted-foreground font-semibold py-2 px-4 rounded-md transition duration-300"
                             >
                                 Cancel
                             </button>
                             <button
                                 type="submit"
-                                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
+                                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2 px-4 rounded-md transition duration-300"
                             >
                                 Register as Agent
                             </button>

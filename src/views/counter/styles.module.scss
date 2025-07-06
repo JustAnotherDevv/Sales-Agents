@@ -1,14 +1,14 @@
 .counterView{
     height: 100vh;
     width: 100%;
-    background: #050e36;
+    background: hsl(var(--background));
     position: absolute;
     top: 0;
     box-sizing: border-box;
     padding: 5%;
     h1{
         text-align: center;
-        color: white;
+        color: hsl(var(--foreground));
         font-weight: bolder;
         font-size: 5em;
         small{

@@ -1,176 +1,345 @@
 import React, { useState } from 'react'
+import { useHistory } from 'react-router-dom'
+
+interface BountyFormData {
+    companyName: string
+    mainLink: string
+    contactName: string
+    contactInfo: string
+    leadTypes: string[]
+    otherLeadType: string
+    sector: string
+    otherSector: string
+    supportOfferings: string[]
+    additionalNotes: string
+}
 
 const CreateBounty: React.FC = () => {
-    const [bountyData, setBountyData] = useState({
-        title: '',
-        description: '',
-        reward: '',
-        targetIndustry: '',
-        targetLocation: '',
-        deadline: '',
+    const history = useHistory()
+    const [formData, setFormData] = useState<BountyFormData>({
+        companyName: '',
+        mainLink: '',
+        contactName: '',
+        contactInfo: '',
+        leadTypes: [],
+        otherLeadType: '',
+        sector: '',
+        otherSector: '',
+        supportOfferings: [],
+        additionalNotes: '',
     })
 
-    const handleInputChange = (
-        e: React.ChangeEvent<
-            HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-        >
-    ) => {
-        const { name, value } = e.target
-        setBountyData((prev) => ({
+    const leadTypeOptions = [
+        'Early-stage builders',
+        'Live projects',
+        'Projects looking for grants',
+        'Teams raising funding',
+        'Startups for our incubator',
+    ]
+
+    const sectorOptions = [
+        'Infra / Tooling',
+        'DeFi',
+        'Gaming',
+        'Social / Community',
+        'RWA / Sustainability',
+    ]
+
+    const supportOptions = [
+        'Grant',
+        'Investment',
+        'Incubation',
+        'Infra / tech support',
+    ]
+
+    const handleInputChange = (field: keyof BountyFormData, value: any) => {
+        setFormData((prev) => ({
             ...prev,
-            [name]: value,
+            [field]: value,
+        }))
+    }
+
+    const handleCheckboxChange = (
+        field: 'leadTypes' | 'supportOfferings',
+        value: string,
+        checked: boolean
+    ) => {
+        setFormData((prev) => ({
+            ...prev,
+            [field]: checked
+                ? [...prev[field], value]
+                : prev[field].filter((item) => item !== value),
         }))
     }
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault()
         // Handle bounty creation logic here
-        console.log('Creating bounty:', bountyData)
+        console.log('Creating bounty:', formData)
+        // Navigate to lead generation page
+        history.push('/lead-generation')
     }
 
     return (
-        <div className="min-h-screen bg-gray-50 py-8">
+        <div className="min-h-screen bg-background py-8">
             <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="bg-white shadow rounded-lg p-6">
-                    <h1 className="text-3xl font-bold text-gray-900 mb-6">
-                        Create New Bounty
+                <div className="bg-card shadow rounded-lg p-6">
+                    <h1 className="text-3xl font-bold text-foreground mb-6">
+                        🚀 Lead Request Form
                     </h1>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
+                        {/* Company or Protocol Name */}
                         <div>
                             <label
-                                htmlFor="title"
-                                className="block text-sm font-medium text-gray-700"
+                                htmlFor="companyName"
+                                className="block text-sm font-medium text-foreground mb-2"
                             >
-                                Bounty Title
+                                Company or Protocol Name
                             </label>
                             <input
                                 type="text"
-                                id="title"
-                                name="title"
+                                id="companyName"
+                                value={formData.companyName}
+                                onChange={(e) =>
+                                    handleInputChange(
+                                        'companyName',
+                                        e.target.value
+                                    )
+                                }
+                                className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+                                placeholder="Who you are"
                                 required
-                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="Enter bounty title"
-                                value={bountyData.title}
-                                onChange={handleInputChange}
                             />
                         </div>
 
+                        {/* Main Link */}
                         <div>
                             <label
-                                htmlFor="description"
-                                className="block text-sm font-medium text-gray-700"
+                                htmlFor="mainLink"
+                                className="block text-sm font-medium text-foreground mb-2"
                             >
-                                Description
-                            </label>
-                            <textarea
-                                id="description"
-                                name="description"
-                                rows={4}
-                                required
-                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="Describe what you're looking for..."
-                                value={bountyData.description}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-
-                        <div>
-                            <label
-                                htmlFor="reward"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                Reward Amount ($)
+                                Main Link
                             </label>
                             <input
-                                type="number"
-                                id="reward"
-                                name="reward"
+                                type="url"
+                                id="mainLink"
+                                value={formData.mainLink}
+                                onChange={(e) =>
+                                    handleInputChange(
+                                        'mainLink',
+                                        e.target.value
+                                    )
+                                }
+                                className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+                                placeholder="Website, dApp, or Twitter"
                                 required
-                                min="0"
-                                step="0.01"
-                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="0.00"
-                                value={bountyData.reward}
-                                onChange={handleInputChange}
                             />
                         </div>
 
+                        {/* Contact Info */}
+                        <div className="grid grid-cols-2 gap-4">
+                            <div>
+                                <label
+                                    htmlFor="contactName"
+                                    className="block text-sm font-medium text-foreground mb-2"
+                                >
+                                    Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="contactName"
+                                    value={formData.contactName}
+                                    onChange={(e) =>
+                                        handleInputChange(
+                                            'contactName',
+                                            e.target.value
+                                        )
+                                    }
+                                    className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+                                    placeholder="Your name"
+                                    required
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    htmlFor="contactInfo"
+                                    className="block text-sm font-medium text-foreground mb-2"
+                                >
+                                    Email or Telegram
+                                </label>
+                                <input
+                                    type="text"
+                                    id="contactInfo"
+                                    value={formData.contactInfo}
+                                    onChange={(e) =>
+                                        handleInputChange(
+                                            'contactInfo',
+                                            e.target.value
+                                        )
+                                    }
+                                    className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+                                    placeholder="Email or @username"
+                                    required
+                                />
+                            </div>
+                        </div>
+
+                        {/* Lead Types */}
                         <div>
-                            <label
-                                htmlFor="targetIndustry"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                Target Industry
+                            <label className="block text-sm font-medium text-foreground mb-2">
+                                What kind of leads are you looking for?
                             </label>
                             <select
-                                id="targetIndustry"
-                                name="targetIndustry"
+                                value={formData.leadTypes[0] || ''}
+                                onChange={(e) => {
+                                    const value = e.target.value
+                                    if (value === 'Other') {
+                                        handleInputChange('leadTypes', [
+                                            'Other',
+                                        ])
+                                    } else if (value) {
+                                        handleInputChange('leadTypes', [value])
+                                    } else {
+                                        handleInputChange('leadTypes', [])
+                                    }
+                                }}
+                                className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
                                 required
-                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                value={bountyData.targetIndustry}
-                                onChange={handleInputChange}
                             >
-                                <option value="">Select an industry</option>
-                                <option value="technology">Technology</option>
-                                <option value="healthcare">Healthcare</option>
-                                <option value="finance">Finance</option>
-                                <option value="retail">Retail</option>
-                                <option value="manufacturing">
-                                    Manufacturing
-                                </option>
-                                <option value="other">Other</option>
+                                <option value="">Select lead type</option>
+                                {leadTypeOptions.map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                                <option value="Other">Other</option>
                             </select>
+                            {formData.leadTypes.includes('Other') && (
+                                <div className="mt-2">
+                                    <input
+                                        type="text"
+                                        value={formData.otherLeadType}
+                                        onChange={(e) =>
+                                            handleInputChange(
+                                                'otherLeadType',
+                                                e.target.value
+                                            )
+                                        }
+                                        className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+                                        placeholder="Specify other lead type"
+                                    />
+                                </div>
+                            )}
                         </div>
 
+                        {/* Sector */}
+                        <div>
+                            <label className="block text-sm font-medium text-foreground mb-2">
+                                Preferred Sector (optional)
+                            </label>
+                            <select
+                                value={formData.sector}
+                                onChange={(e) =>
+                                    handleInputChange('sector', e.target.value)
+                                }
+                                className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+                            >
+                                <option value="">Select sector</option>
+                                {sectorOptions.map((option) => (
+                                    <option key={option} value={option}>
+                                        {option}
+                                    </option>
+                                ))}
+                                <option value="Other">Other</option>
+                            </select>
+                            {formData.sector === 'Other' && (
+                                <div className="mt-2">
+                                    <input
+                                        type="text"
+                                        value={formData.otherSector}
+                                        onChange={(e) =>
+                                            handleInputChange(
+                                                'otherSector',
+                                                e.target.value
+                                            )
+                                        }
+                                        className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+                                        placeholder="Specify other sector"
+                                    />
+                                </div>
+                            )}
+                        </div>
+
+                        {/* Support Offerings */}
+                        <div>
+                            <label className="block text-sm font-medium text-foreground mb-2">
+                                What support are you offering?
+                            </label>
+                            <div className="space-y-2">
+                                {supportOptions.map((option) => (
+                                    <label
+                                        key={option}
+                                        className="flex items-center space-x-2"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            checked={formData.supportOfferings.includes(
+                                                option
+                                            )}
+                                            onChange={(e) =>
+                                                handleCheckboxChange(
+                                                    'supportOfferings',
+                                                    option,
+                                                    e.target.checked
+                                                )
+                                            }
+                                            className="rounded border-input focus:ring-ring"
+                                        />
+                                        <span className="text-sm text-muted-foreground">
+                                            {option}
+                                        </span>
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
+
+                        {/* Additional Notes */}
                         <div>
                             <label
-                                htmlFor="targetLocation"
-                                className="block text-sm font-medium text-gray-700"
+                                htmlFor="additionalNotes"
+                                className="block text-sm font-medium text-foreground mb-2"
                             >
-                                Target Location
+                                Anything else we should know? (Optional)
                             </label>
-                            <input
-                                type="text"
-                                id="targetLocation"
-                                name="targetLocation"
-                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="City, State or Country"
-                                value={bountyData.targetLocation}
-                                onChange={handleInputChange}
+                            <textarea
+                                id="additionalNotes"
+                                value={formData.additionalNotes}
+                                onChange={(e) =>
+                                    handleInputChange(
+                                        'additionalNotes',
+                                        e.target.value
+                                    )
+                                }
+                                rows={3}
+                                className="w-full px-3 py-2 border border-input rounded-md focus:outline-none focus:ring-2 focus:ring-ring"
+                                placeholder="Optional notes"
                             />
                         </div>
 
-                        <div>
-                            <label
-                                htmlFor="deadline"
-                                className="block text-sm font-medium text-gray-700"
-                            >
-                                Deadline
-                            </label>
-                            <input
-                                type="date"
-                                id="deadline"
-                                name="deadline"
-                                required
-                                className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                value={bountyData.deadline}
-                                onChange={handleInputChange}
-                            />
-                        </div>
-
-                        <div className="flex justify-end space-x-3">
-                            <button
-                                type="button"
-                                className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded-md transition duration-300"
-                            >
-                                Cancel
-                            </button>
+                        <div className="flex gap-4 pt-4">
                             <button
                                 type="submit"
-                                className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300"
+                                className="flex-1 bg-primary text-primary-foreground py-2 px-4 rounded-md hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-ring"
                             >
-                                Create Bounty
+                                Submit Lead Request
+                            </button>
+                            <button
+                                type="button"
+                                className="flex-1 bg-muted text-muted-foreground py-2 px-4 rounded-md hover:bg-muted/80 focus:outline-none focus:ring-2 focus:ring-ring"
+                            >
+                                Cancel
                             </button>
                         </div>
                     </form>

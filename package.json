@@ -19,10 +19,14 @@
   "dependencies": {
     "@reduxjs/toolkit": "^1.6.2",
     "@types/react-router-dom": "^5.3.2",
+    "class-variance-authority": "^0.7.1",
     "classnames-generics": "^1.0.6",
+    "clsx": "^2.1.1",
+    "framer-motion": "^12.23.0",
     "global": "^4.4.0",
     "i18next": "^21.5.2",
     "i18next-browser-languagedetector": "^6.1.2",
+    "lucide-react": "^0.525.0",
     "prettier": "^2.4.1",
     "react": "^17.0.0",
     "react-dom": "^17.0.0",
@@ -30,6 +34,8 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "5.2.0",
     "sass": "^1.43.4",
+    "tailwind-merge": "^3.3.1",
+    "tailwindcss-animate": "^1.0.7",
     "vite-plugin-sass-dts": "^1.1.18"
   },
   "devDependencies": {

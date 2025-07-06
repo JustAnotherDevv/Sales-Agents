@@ -41,7 +41,7 @@ const AgentStageCard: React.FC<AgentStageCardProps> = ({
             case 'busy':
                 return 'bg-yellow-100 text-yellow-800 border-yellow-200'
             case 'offline':
-                return 'bg-gray-100 text-gray-800 border-gray-200'
+                return 'bg-muted text-muted-foreground border-border'
             default:
                 return 'bg-green-100 text-green-800 border-green-200'
         }
@@ -103,10 +103,10 @@ const AgentStageCard: React.FC<AgentStageCardProps> = ({
                             />
                         </div>
                         <div>
-                            <h3 className="font-semibold text-gray-900">
+                            <h3 className="font-semibold text-foreground">
                                 {agent.firstName} {agent.lastName}
                             </h3>
-                            <p className="text-sm text-gray-600">
+                            <p className="text-sm text-muted-foreground">
                                 {agent.position}
                             </p>
                         </div>
@@ -122,19 +122,19 @@ const AgentStageCard: React.FC<AgentStageCardProps> = ({
                     <div className="flex items-center space-x-4">
                         <div className="flex items-center space-x-1">
                             {renderStars(agent.rating)}
-                            <span className="text-gray-600 ml-1">
+                            <span className="text-muted-foreground ml-1">
                                 ({agent.rating})
                             </span>
                         </div>
-                        <div className="text-gray-600">
+                        <div className="text-muted-foreground">
                             {agent.totalDeals} deals
                         </div>
                     </div>
                     <div className="text-right">
-                        <div className="font-semibold text-blue-600">
+                        <div className="font-semibold text-primary">
                             ${agent.hourlyRate}/hr
                         </div>
-                        <div className="text-xs text-gray-500">
+                        <div className="text-xs text-muted-foreground">
                             {agent.successRate}% success
                         </div>
                     </div>
@@ -144,13 +144,13 @@ const AgentStageCard: React.FC<AgentStageCardProps> = ({
             {/* Body */}
             <div className="p-4">
                 <div className="mb-3">
-                    <p className="text-sm text-gray-700 line-clamp-2">
+                    <p className="text-sm text-foreground line-clamp-2">
                         {agent.bio}
                     </p>
                 </div>
 
                 <div className="mb-4">
-                    <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                    <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
                         Specialties
                     </h4>
                     <div className="flex flex-wrap gap-1">
@@ -165,7 +165,7 @@ const AgentStageCard: React.FC<AgentStageCardProps> = ({
                                 </span>
                             ))}
                         {agent.specialties.length > 3 && (
-                            <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                            <span className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
                                 +{agent.specialties.length - 3} more
                             </span>
                         )}
@@ -173,19 +173,21 @@ const AgentStageCard: React.FC<AgentStageCardProps> = ({
                 </div>
 
                 <div className="mb-4">
-                    <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                    <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
                         Experience
                     </h4>
                     <div className="flex items-center justify-between text-sm">
-                        <span className="text-gray-700">
+                        <span className="text-foreground">
                             {agent.experience} years
                         </span>
-                        <span className="text-gray-500">{agent.company}</span>
+                        <span className="text-muted-foreground">
+                            {agent.company}
+                        </span>
                     </div>
                 </div>
 
                 <div className="mb-4">
-                    <h4 className="text-xs font-medium text-gray-500 uppercase tracking-wide mb-2">
+                    <h4 className="text-xs font-medium text-muted-foreground uppercase tracking-wide mb-2">
                         Availability
                     </h4>
                     <div className="flex flex-wrap gap-1">
@@ -198,7 +200,7 @@ const AgentStageCard: React.FC<AgentStageCardProps> = ({
                             </span>
                         ))}
                         {agent.availability.length > 5 && (
-                            <span className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full">
+                            <span className="px-2 py-1 bg-muted text-muted-foreground text-xs rounded-full">
                                 +{agent.availability.length - 5} more
                             </span>
                         )}
@@ -206,7 +208,7 @@ const AgentStageCard: React.FC<AgentStageCardProps> = ({
                 </div>
 
                 {agent.lastActive && (
-                    <div className="text-xs text-gray-500 mb-4">
+                    <div className="text-xs text-muted-foreground mb-4">
                         Last active: {agent.lastActive}
                     </div>
                 )}
@@ -218,7 +220,7 @@ const AgentStageCard: React.FC<AgentStageCardProps> = ({
                     {onViewProfile && (
                         <button
                             onClick={() => onViewProfile(agent.id)}
-                            className="flex-1 px-3 py-2 text-sm text-blue-600 hover:text-blue-800 font-medium"
+                            className="flex-1 px-3 py-2 text-sm text-primary hover:text-primary/80 font-medium"
                         >
                             View Profile
                         </button>

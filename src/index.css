@@ -1,12 +1,94 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --background: 36 33% 90%; /* light beige, sampled from image bg */
+  --foreground: 0 0% 0%; /* pure black for main text */
+  --primary: 180 85% 26%; /* #0B7978 teal */
+  --primary-foreground: 0 0% 98%; /* white */
+  --secondary: 43 97% 59%; /* #FCB832 mustard yellow */
+  --secondary-foreground: 0 0% 20%; /* dark for contrast */
+  --accent: 22 89% 60%; /* #F27238 orange */
+  --accent-foreground: 0 0% 98%; /* white */
+  --muted: 337 71% 36%; /* #811638 maroon */
+  --muted-foreground: 0 0% 30%; /* dark gray for muted text */
+  --card: 36 33% 95%; /* lighter beige */
+  --card-foreground: 0 0% 15%;
+  --popover: 36 33% 98%;
+  --popover-foreground: 0 0% 15%;
+  --destructive: 356 70% 46%; /* #C32327 red */
+  --destructive-foreground: 0 0% 98%;
+  --border: 36 33% 80%;
+  --input: 36 33% 80%;
+  --ring: 180 85% 26%;
+  --chart-1: 337 71% 36%; /* #811638 maroon */
+  --chart-2: 180 85% 26%; /* #0B7978 teal */
+  --chart-3: 43 97% 59%; /* #FCB832 yellow */
+  --chart-4: 22 89% 60%; /* #F27238 orange */
+  --chart-5: 356 70% 46%; /* #C32327 red */
+  --radius: 0.5rem;
+}
+
+.dark {
+  --background: 0 0% 0%; /* pure black background */
+  --foreground: 0 0% 98%;
+  --card: 0 0% 5%; /* very dark gray for cards */
+  --card-foreground: 0 0% 98%;
+  --popover: 0 0% 5%; /* very dark gray for popovers */
+  --popover-foreground: 0 0% 98%;
+  --primary: 43 97% 59%; /* yellow as primary in dark mode for vibrancy */
+  --primary-foreground: 0 0% 20%;
+  --secondary: 180 85% 26%; /* teal as secondary in dark mode */
+  --secondary-foreground: 0 0% 98%;
+  --accent: 22 89% 60%;
+  --accent-foreground: 0 0% 98%;
+  --muted: 0 0% 15%; /* dark gray for muted elements */
+  --muted-foreground: 0 0% 70%; /* light gray for muted text */
+  --destructive: 356 70% 46%;
+  --destructive-foreground: 0 0% 98%;
+  --border: 0 0% 20%; /* dark gray for borders */
+  --input: 0 0% 20%; /* dark gray for inputs */
+  --ring: 43 97% 59%;
+  --chart-1: 337 71% 36%;
+  --chart-2: 180 85% 26%;
+  --chart-3: 43 97% 59%;
+  --chart-4: 22 89% 60%;
+  --chart-5: 356 70% 46%;
+}
 
 body{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Quicksand', sans-serif;
   width: 100%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin-reverse {
+  from {
+    transform: rotate(360deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
 }

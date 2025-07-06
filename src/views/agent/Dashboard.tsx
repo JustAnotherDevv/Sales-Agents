@@ -33,24 +33,46 @@ const Dashboard: React.FC = () => {
     const [bounties] = useState<Bounty[]>([
         {
             id: '1',
-            title: 'Tech Startup CTO Lead',
+            title: 'DeFi Protocol Builder Lead',
             description:
-                'Looking for CTOs at early-stage tech startups in the Bay Area',
-            reward: 500,
-            company: 'TechCorp Inc',
-            industry: 'Technology',
+                'Seeking experienced DeFi developers and protocol builders with proven track record in yield farming, DEX development, or lending protocols',
+            reward: 1200,
+            company: 'Ethereum Foundation',
+            industry: 'DeFi',
             deadline: '2024-02-15',
             status: 'active',
         },
         {
             id: '2',
-            title: 'Healthcare VP Sales',
+            title: 'Layer 2 Scaling Solution Lead',
             description:
-                'Seeking VP of Sales at healthcare companies with 50+ employees',
-            reward: 750,
-            company: 'HealthSolutions',
-            industry: 'Healthcare',
+                'Looking for developers and teams building on Polygon, Arbitrum, Optimism, or other L2 solutions with active user base',
+            reward: 800,
+            company: 'Polygon Labs',
+            industry: 'Layer 2',
             deadline: '2024-02-20',
+            status: 'active',
+        },
+        {
+            id: '3',
+            title: 'NFT Marketplace Builder Lead',
+            description:
+                'Seeking developers building innovative NFT marketplaces, gaming platforms, or digital art platforms with on-chain traction',
+            reward: 950,
+            company: 'OpenSea',
+            industry: 'NFT',
+            deadline: '2024-02-25',
+            status: 'active',
+        },
+        {
+            id: '4',
+            title: 'DAO Governance Tool Builder Lead',
+            description:
+                'Looking for teams building governance tools, voting mechanisms, or DAO management platforms with active communities',
+            reward: 650,
+            company: 'Aragon',
+            industry: 'DAO',
+            deadline: '2024-03-01',
             status: 'active',
         },
     ])
@@ -58,36 +80,60 @@ const Dashboard: React.FC = () => {
     const [leads] = useState<Lead[]>([
         {
             id: '1',
-            name: 'John Smith',
-            company: 'StartupXYZ',
-            position: 'CTO',
-            email: 'john.smith@startupxyz.com',
+            name: 'Alex Chen',
+            company: 'Uniswap Labs',
+            position: 'Senior DeFi Developer',
+            email: 'alex.chen@uniswap.org',
             phone: '+1 (555) 123-4567',
             bountyId: '1',
-            bountyTitle: 'Tech Startup CTO Lead',
+            bountyTitle: 'DeFi Protocol Builder Lead',
             status: 'approved',
             submittedDate: '2024-01-15',
         },
         {
             id: '2',
-            name: 'Sarah Johnson',
-            company: 'MedTech Inc',
-            position: 'VP of Sales',
-            email: 'sarah.j@medtech.com',
+            name: 'Maria Rodriguez',
+            company: 'Optimism Foundation',
+            position: 'Core Developer',
+            email: 'maria.r@optimism.io',
             phone: '+1 (555) 987-6543',
             bountyId: '2',
-            bountyTitle: 'Healthcare VP Sales',
+            bountyTitle: 'Layer 2 Scaling Solution Lead',
             status: 'pending',
             submittedDate: '2024-01-16',
+        },
+        {
+            id: '3',
+            name: 'David Kim',
+            company: 'Blur Protocol',
+            position: 'NFT Platform Architect',
+            email: 'david.kim@blur.io',
+            phone: '+1 (555) 456-7890',
+            bountyId: '3',
+            bountyTitle: 'NFT Marketplace Builder Lead',
+            status: 'approved',
+            submittedDate: '2024-01-18',
+        },
+        {
+            id: '4',
+            name: 'Lisa Wang',
+            company: 'Snapshot Labs',
+            position: 'Governance Engineer',
+            email: 'lisa.wang@snapshot.org',
+            phone: '+1 (555) 321-6540',
+            bountyId: '4',
+            bountyTitle: 'DAO Governance Tool Builder Lead',
+            status: 'rejected',
+            submittedDate: '2024-01-20',
         },
     ])
 
     const stats = {
-        totalEarnings: 1250,
-        activeBounties: 8,
-        submittedLeads: 12,
-        approvedLeads: 8,
-        pendingLeads: 3,
+        totalEarnings: 2150,
+        activeBounties: 4,
+        submittedLeads: 4,
+        approvedLeads: 2,
+        pendingLeads: 1,
         rejectedLeads: 1,
     }
 
@@ -102,11 +148,11 @@ const Dashboard: React.FC = () => {
             case 'active':
                 return 'bg-blue-100 text-blue-800'
             case 'completed':
-                return 'bg-gray-100 text-gray-800'
+                return 'bg-muted text-muted-foreground'
             case 'expired':
                 return 'bg-red-100 text-red-800'
             default:
-                return 'bg-gray-100 text-gray-800'
+                return 'bg-muted text-muted-foreground'
         }
     }
 
@@ -114,7 +160,7 @@ const Dashboard: React.FC = () => {
         <div className="space-y-6">
             {/* Stats Cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div className="bg-white p-6 rounded-lg shadow">
+                <div className="bg-card p-6 rounded-lg shadow">
                     <div className="flex items-center">
                         <div className="p-2 bg-green-100 rounded-lg">
                             <svg
@@ -132,17 +178,17 @@ const Dashboard: React.FC = () => {
                             </svg>
                         </div>
                         <div className="ml-4">
-                            <p className="text-sm font-medium text-gray-600">
+                            <p className="text-sm font-medium text-muted-foreground">
                                 Total Earnings
                             </p>
-                            <p className="text-2xl font-semibold text-gray-900">
+                            <p className="text-2xl font-semibold text-foreground">
                                 ${stats.totalEarnings}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-white p-6 rounded-lg shadow">
+                <div className="bg-card p-6 rounded-lg shadow">
                     <div className="flex items-center">
                         <div className="p-2 bg-blue-100 rounded-lg">
                             <svg
@@ -160,17 +206,17 @@ const Dashboard: React.FC = () => {
                             </svg>
                         </div>
                         <div className="ml-4">
-                            <p className="text-sm font-medium text-gray-600">
+                            <p className="text-sm font-medium text-muted-foreground">
                                 Active Bounties
                             </p>
-                            <p className="text-2xl font-semibold text-gray-900">
+                            <p className="text-2xl font-semibold text-foreground">
                                 {stats.activeBounties}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-white p-6 rounded-lg shadow">
+                <div className="bg-card p-6 rounded-lg shadow">
                     <div className="flex items-center">
                         <div className="p-2 bg-yellow-100 rounded-lg">
                             <svg
@@ -188,17 +234,17 @@ const Dashboard: React.FC = () => {
                             </svg>
                         </div>
                         <div className="ml-4">
-                            <p className="text-sm font-medium text-gray-600">
+                            <p className="text-sm font-medium text-muted-foreground">
                                 Submitted Leads
                             </p>
-                            <p className="text-2xl font-semibold text-gray-900">
+                            <p className="text-2xl font-semibold text-foreground">
                                 {stats.submittedLeads}
                             </p>
                         </div>
                     </div>
                 </div>
 
-                <div className="bg-white p-6 rounded-lg shadow">
+                <div className="bg-card p-6 rounded-lg shadow">
                     <div className="flex items-center">
                         <div className="p-2 bg-green-100 rounded-lg">
                             <svg
@@ -216,10 +262,10 @@ const Dashboard: React.FC = () => {
                             </svg>
                         </div>
                         <div className="ml-4">
-                            <p className="text-sm font-medium text-gray-600">
+                            <p className="text-sm font-medium text-muted-foreground">
                                 Approved Leads
                             </p>
-                            <p className="text-2xl font-semibold text-gray-900">
+                            <p className="text-2xl font-semibold text-foreground">
                                 {stats.approvedLeads}
                             </p>
                         </div>
@@ -228,9 +274,9 @@ const Dashboard: React.FC = () => {
             </div>
 
             {/* Recent Activity */}
-            <div className="bg-white rounded-lg shadow">
-                <div className="px-6 py-4 border-b border-gray-200">
-                    <h3 className="text-lg font-medium text-gray-900">
+            <div className="bg-card rounded-lg shadow">
+                <div className="px-6 py-4 border-b border-border">
+                    <h3 className="text-lg font-medium text-foreground">
                         Recent Activity
                     </h3>
                 </div>
@@ -242,10 +288,10 @@ const Dashboard: React.FC = () => {
                                 className="flex items-center justify-between"
                             >
                                 <div>
-                                    <p className="text-sm font-medium text-gray-900">
+                                    <p className="text-sm font-medium text-foreground">
                                         Lead submitted for "{lead.bountyTitle}"
                                     </p>
-                                    <p className="text-sm text-gray-500">
+                                    <p className="text-sm text-muted-foreground">
                                         {lead.name} at {lead.company}
                                     </p>
                                 </div>
@@ -257,7 +303,7 @@ const Dashboard: React.FC = () => {
                                     >
                                         {lead.status}
                                     </span>
-                                    <span className="text-sm text-gray-500">
+                                    <span className="text-sm text-muted-foreground">
                                         {new Date(
                                             lead.submittedDate
                                         ).toLocaleDateString()}
@@ -274,16 +320,16 @@ const Dashboard: React.FC = () => {
     const renderBounties = () => (
         <div className="space-y-4">
             {bounties.map((bounty) => (
-                <div key={bounty.id} className="bg-white rounded-lg shadow p-6">
+                <div key={bounty.id} className="bg-card rounded-lg shadow p-6">
                     <div className="flex justify-between items-start">
                         <div className="flex-1">
-                            <h3 className="text-lg font-medium text-gray-900">
+                            <h3 className="text-lg font-medium text-foreground">
                                 {bounty.title}
                             </h3>
-                            <p className="text-gray-600 mt-1">
+                            <p className="text-muted-foreground mt-1">
                                 {bounty.description}
                             </p>
-                            <div className="mt-2 flex items-center space-x-4 text-sm text-gray-500">
+                            <div className="mt-2 flex items-center space-x-4 text-sm text-muted-foreground">
                                 <span>{bounty.company}</span>
                                 <span>•</span>
                                 <span>{bounty.industry}</span>
@@ -310,17 +356,38 @@ const Dashboard: React.FC = () => {
                         </div>
                     </div>
                     <div className="mt-4 flex justify-end">
-                        <button className="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-md transition duration-300">
-                            Submit Lead
+                        <button className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold py-2 px-4 rounded-md transition duration-300 flex items-center space-x-2">
+                            <svg
+                                className="animate-spin -ml-1 mr-2 h-4 w-4 text-black"
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                            >
+                                <circle
+                                    className="opacity-25"
+                                    cx="12"
+                                    cy="12"
+                                    r="10"
+                                    stroke="currentColor"
+                                    strokeWidth="4"
+                                ></circle>
+                                <path
+                                    className="opacity-75"
+                                    fill="currentColor"
+                                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                                ></path>
+                            </svg>
+                            <span>Looking for Leads</span>
                         </button>
                     </div>
                 </div>
             ))}
+            7
         </div>
     )
 
     const renderLeads = () => (
-        <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="bg-card rounded-lg shadow overflow-hidden">
             <div className="px-6 py-4 border-b border-gray-200">
                 <h3 className="text-lg font-medium text-gray-900">
                     My Submitted Leads
@@ -328,7 +395,7 @@ const Dashboard: React.FC = () => {
             </div>
             <div className="overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50">
+                    <thead className="bg-muted/50">
                         <tr>
                             <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                 Lead
@@ -344,9 +411,9 @@ const Dashboard: React.FC = () => {
                             </th>
                         </tr>
                     </thead>
-                    <tbody className="bg-white divide-y divide-gray-200">
+                    <tbody className="bg-card divide-y divide-border">
                         {leads.map((lead) => (
-                            <tr key={lead.id} className="hover:bg-gray-50">
+                            <tr key={lead.id} className="hover:bg-muted/20">
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <div>
                                         <div className="text-sm font-medium text-gray-900">
@@ -384,7 +451,7 @@ const Dashboard: React.FC = () => {
 
     const renderEarnings = () => (
         <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow p-6">
+            <div className="bg-card rounded-lg shadow p-6">
                 <h3 className="text-lg font-medium text-gray-900 mb-4">
                     Earnings Summary
                 </h3>
@@ -410,7 +477,7 @@ const Dashboard: React.FC = () => {
                 </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow p-6">
+            <div className="bg-card rounded-lg shadow p-6">
                 <h3 className="text-lg font-medium text-gray-900 mb-4">
                     Recent Transactions
                 </h3>
@@ -432,7 +499,10 @@ const Dashboard: React.FC = () => {
                                 </div>
                                 <div className="text-right">
                                     <p className="text-sm font-medium text-green-600">
-                                        +$500
+                                        +$
+                                        {bounties.find(
+                                            (b) => b.id === lead.bountyId
+                                        )?.reward || 500}
                                     </p>
                                     <p className="text-xs text-gray-500">
                                         {new Date(
@@ -448,13 +518,13 @@ const Dashboard: React.FC = () => {
     )
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-background">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                 <div className="mb-8">
-                    <h1 className="text-3xl font-bold text-gray-900">
+                    <h1 className="text-3xl font-bold text-foreground">
                         Agent Dashboard
                     </h1>
-                    <p className="text-gray-600 mt-2">
+                    <p className="text-muted-foreground mt-2">
                         Welcome back! Here's your sales performance overview.
                     </p>
                 </div>
