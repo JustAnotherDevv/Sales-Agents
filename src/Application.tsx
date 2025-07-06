@@ -12,12 +12,9 @@ import styles from './App.module.scss'
 import { classNamesFunc } from 'classnames-generics'
 import Layout from './components/Layout'
 
-const classNames = classNamesFunc<keyof typeof styles>()
-type Props = {
-    active: boolean
-}
+const classNames = classNamesFunc<string>()
 
-const Application: React.FunctionComponent<{}> = () => {
+const Application: React.FunctionComponent = () => {
     return (
         <Provider store={store}>
             <div className={`${classNames(styles.appContainer)} dark`}>
