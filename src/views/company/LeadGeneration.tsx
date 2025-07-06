@@ -332,26 +332,6 @@ const LeadGeneration: React.FC = () => {
                             </p>
                         </div>
                     </div>
-
-                    <div className="mt-8 p-4 bg-primary/10 rounded-lg">
-                        <h3 className="font-semibold text-foreground mb-2">
-                            What happens next?
-                        </h3>
-                        <ul className="text-sm text-muted-foreground space-y-1">
-                            <li>
-                                • Our AI agents will analyze your requirements
-                            </li>
-                            <li>
-                                • They'll search through our database and
-                                networks
-                            </li>
-                            <li>
-                                • You'll receive an email notification when
-                                leads are ready
-                            </li>
-                            <li>• Review and connect with the best matches</li>
-                        </ul>
-                    </div>
                 </div>
             </div>
         </div>

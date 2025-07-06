@@ -87,6 +87,9 @@ const CreateBounty: React.FC = () => {
                     <h1 className="text-3xl font-bold text-foreground mb-6">
                         🚀 Lead Request Form
                     </h1>
+                    <h2 className="text-xl font-bold text-foreground mb-6">
+                        Request leads for agents in the network to seek out!
+                    </h2>
 
                     <form onSubmit={handleSubmit} className="space-y-6">
                         {/* Company or Protocol Name */}

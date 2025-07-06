@@ -42,7 +42,8 @@ const Header: React.FC = () => {
                 <img
                     src="/src/assets/images/logo.png"
                     alt="Sales Agents"
-                    className="h-12"
+                    className="h-12 cursor-pointer"
+                    onClick={() => navigateTo('/')}
                 />
             </div>
 
